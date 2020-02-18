@@ -1,0 +1,54 @@
+
+<div class="form-group">
+  <a routerLink="/login"  class="btn btn-link">Login</a>
+</div>
+    <div class="card ">
+      <div class="card-body">
+        <div class="card-title">
+          <h3 class="text-center ">Название</h3>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row h4">
+            <div class="hoverfint col-3 rfont" >Номер документа
+              <span class='ml-1' class='pointer hoverfint-hidden' (click)="sorter('device')">
+                <i class='icon ion-md-funnel text-primary'></i>
+              </span>
+            </div>
+            <div class="hoverfint col-2 rfont">Дата
+              <span class='ml-1' class='pointer hoverfint-hidden' (click)="sorter('location')">
+                <i class='icon ion-md-funnel text-primary'></i>
+              </span>
+            </div>
+            <div class="hoverfint col-2 rfont">Название
+              <span class='ml-1' class='pointer hoverfint-hidden' (click)="sorter('param')">
+                <i class='icon ion-md-funnel text-primary'></i>
+              </span>
+            </div>
+            <div class="hoverfint col-5 rfont">Пояснение
+              <span class='ml-1' class='pointer hoverfint-hidden' (click)="sorter('alarm')">
+                <i class='icon ion-md-funnel text-primary'></i>
+              </span>
+            </div>
+
+          </div>
+        </li>
+        <li *ngFor='let file of fileUploads | async; let i=index;'
+          [ngClass]="  i % 2 == 0 ? 'list-group-item amb' : 'list-group-item'">
+
+          <div class="row">
+            <div class="col-3" [class.act]="isAct">{{file.number_document}}</div>
+
+            <div class="col-2" [class.act]="isAct">{{file.date}}</div>
+            <div class="col-2" [class.act]="isAct">{{file.name}}</div>
+            <div class="hoverfint col-5 rfont" [class.act]="isAct">{{file.note}}<span class='ml-1'
+                class='pointer hoverfint-hidden'>
+                <i class='icon ion-md-warning text-danger'></i>
+              </span></div>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+

@@ -1,0 +1,64 @@
+.myresize{height: 50 px; font-size: xx-large; width: 200px;}
+.tfont{ font-size: large; text-align: center;}
+.mywidth{width: 100%;}
+.rfont{text-align: center;}
+.lfont{text-align: left;}
+#filerr{color: #E74C3C;}
+.amb{background-color:#f8f9fa;}
+.cas{width: 1000px; align-content: center; margin-left: -40%; margin-right: auto;  margin-top: 20px;}
+.list-group-item:hover{background-color:#dee2e6;}
+.fixedbut{
+    position: fixed;
+top: 200px;
+left: 20px;
+
+padding: 10%;
+border: 1px outset #000;
+border-radius: 5px;
+}
+.fixedcom{
+position: fixed;
+top: 280px;
+left: 20px;
+width: 25%;
+border: 1px outset #000;
+border-radius: 5px;
+textarea{width: 100%;border-radius: 5px;};
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    opacity: 0.8;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -10px;
+  }
+ 
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .act{color: #007bff;}

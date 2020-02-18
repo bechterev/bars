@@ -1,0 +1,30 @@
+<h1>Upload your Document!</h1>
+<div>
+  <div *ngIf="error">
+    {{ error.message }}
+  </div>
+  <div *ngIf="uploadResponse.status === 'error'">
+    {{ uploadResponse.message }}
+  </div>
+  <div *ngIf="uploadResponse.status === 'progress'">
+
+
+    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+      {{uploadResponse.message}}%
+    </div>
+
+  </div>
+
+  <div>
+    <input type="text" [(ngModel)]="_name" placeholder="name document" />
+    <input type="text" [(ngModel)]="_number" placeholder="number of document" />
+    <input type="text" [(ngModel)]="_note" placeholder="note..."/> 
+    <input type="text" [(ngModel)]="_date" placeholder="date..."/> 
+  </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <input type="file" name="document" (change)="onFileChange($event)" />
+    <button type="submit">Upload</button>
+
+  </form>
+</div>
