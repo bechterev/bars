@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {UserService} from '../services/user.service';
 import { IMyDpOptions } from 'mydatepicker';
@@ -7,7 +7,8 @@ import {Document} from '../models/document.model';
 @Component({
   selector: 'app-uploadfile',
   templateUrl: './uploadfile.component.html',
-  styleUrls: ['./uploadfile.component.scss']
+  styleUrls: ['./uploadfile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UploadfileComponent implements OnInit {
   form: FormGroup;
@@ -26,7 +27,8 @@ export class UploadfileComponent implements OnInit {
 
   uploadResponse = { status: '', message: '', filePath: '' };
 
-  constructor(private formBuilder: FormBuilder, private usservice: UserService) { }
+  constructor(private formBuilder: FormBuilder, private cd: ChangeDetectorRef,
+    private usservice: UserService) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -61,7 +63,7 @@ export class UploadfileComponent implements OnInit {
     this.Doc.number_document=this._number as Number;
     formData.append('document',JSON.stringify(this.Doc));
     this.usservice.upload(formData).subscribe(
-      (res) => this.uploadResponse = res,
+      (res) => {this.uploadResponse = res; this.cd.detectChanges();},
       (err) => this.error = err
     );
   }

@@ -36,8 +36,8 @@ app.put('/api/upload/:id?',Mupload.single("file"), (req, res)=>{
     let m;
     if(doc.data){
          m={
-            type: req.file.mimetype,
-            date: doc.date,
+            type: doc.type,
+            date: moment(doc.date,'DD.MM.YYYY hh:mm:ss.fff'),
             name: doc.name,
             userId: doc.user_id,
             number_document: doc.number_document,
@@ -46,9 +46,9 @@ app.put('/api/upload/:id?',Mupload.single("file"), (req, res)=>{
     }
     else{
         m={
-            type: req.file.mimetype,
+            type: doc.type,
             name: doc.name,
-            date: doc.date,
+            date: moment(doc.date,'DD.MM.YYYY hh:mm:ss.fff'),
             data: doc.data,
             userId: doc.user_id,
             number_document: doc.number_document,
