@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+form {
+    width: 400px; 
+    padding: 32px;  
+    border-radius: 10px;
+    box-shadow: 0 4px 16px #ccc; 
+    font-family: sans-serif;  
+    letter-spacing: 1px; 
+    margin-top: 150px;
+}
+.form_title { 
+    text-align: center; 
+    margin: 0 0 32px 0; 
+    font-weight: normal;
+}
+.form_group {
+    position: relative;  
+    margin-bottom: 32px; 
+}
+    .form_input {
+        width: 100%;
+        padding: 0 0 10px 0;
+        border: none; 
+        border-bottom: 1px solid #e0e0e0;  
+        background-color: transparent; 
+        outline: none;
+        transition: 0.3s;
+}
+.form_label {
+    
+    top: 0; 
+    z-index: -1; 
+    color: #9e9e9e; 
+    transition: 0.3s;
+}

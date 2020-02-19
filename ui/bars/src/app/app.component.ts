@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { User } from './models/user.model';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+@Component({
+    selector: 'app', templateUrl: 'app.component.html',
+    styles: ['.container  {display: flex; justify-content: center; align - items: center; height: 100vh;}'] })
 export class AppComponent {
     currentUser: User;
 

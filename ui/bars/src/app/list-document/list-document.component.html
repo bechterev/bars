@@ -1,8 +1,9 @@
-
+<div class="leftbar">
 <div class="form-group">
-  <a routerLink="/login"  class="btn btn-link">Login</a>
+  <a routerLink="/login"  class="btn btn-outline-info"style="font-size: large;"><i class="fa fa-sign-in"></i> Login</a>
 </div>
-    <div class="card ">
+</div>
+    <div class="card cas">
       <div class="card-body">
         <div class="card-title">
           <h3 class="text-center ">Название</h3>
@@ -38,7 +39,7 @@
           [ngClass]="  i % 2 == 0 ? 'list-group-item amb' : 'list-group-item'">
 
           <div class="row">
-            <div class="col-3" [class.act]="isAct">{{file.number_document}}</div>
+            <div class="col-3 rfont" [class.act]="isAct">{{file.number_document}}</div>
 
             <div class="col-2" [class.act]="isAct">{{file.date}}</div>
             <div class="col-2" [class.act]="isAct">{{file.name}}</div>

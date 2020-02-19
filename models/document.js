@@ -10,7 +10,7 @@ module.exports=(sequelize,type)=>{
         number_document: type.STRING,
         note: type.STRING,
         data: 
-            type.BLOB('long'),
+            type.BLOB,
         type: type.STRING
           
     },

@@ -19,7 +19,7 @@ app.post('/api/upload',Mupload.single("file"), (req, res)=>{
 
    
     Document.create({
-        type: req.file.mimetype,
+        type: doc.type,
         name: doc.name,
         data: req.file.buffer,
         date: moment(doc.date,'DD.MM.YYYY hh:mm:ss.fff'),
@@ -63,8 +63,7 @@ app.put('/api/upload/:id?',Mupload.single("file"), (req, res)=>{
       }).catch(err=>console.log(err))
 })
 app.get('/api/documents', (req,res)=>{
-    Document.findAll().then(documents=>{documents.map(x=>{if(x.date){ 
-        x.date=moment(x.date).format('DD.MM.YYYY HH:mm'); console.log(x.date);}});  res.json(documents)})
+    Document.findAll().then(documents=>{res.json(documents)})
 })
 app.delete('/api/documents/:id?',(req,res)=>{
     Document.destroy({where:{id:req.params.id}}).then(res.status(200).send({message:'document delete'}))

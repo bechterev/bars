@@ -5,7 +5,7 @@
 .lfont{text-align: left;}
 #filerr{color: #E74C3C;}
 .amb{background-color:#f8f9fa;}
-.card{min-width: 800px;}
+.cas{width: 1000px; align-content: center; margin-left: -40%; margin-right: auto;  margin-top: 100px;}
 .list-group-item:hover{background-color:#dee2e6;}
 .fixedbut{
     position: fixed;
@@ -62,3 +62,8 @@ textarea{width: 100%;border-radius: 5px;};
     visibility: visible;
   }
   .act{color: #007bff;}
+  .leftbar{
+    position: fixed;
+    top:100px;
+    left: 10%;
+  }

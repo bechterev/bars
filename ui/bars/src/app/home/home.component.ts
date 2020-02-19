@@ -8,11 +8,6 @@ import {  AuthenticationService } from '../services/authentication.service';
 import {UserService} from '../services/user.service';
 
 
-
-
-
-
-
 @Component({ templateUrl: 'home.component.html',
 styleUrls: ['./home.component.scss'] })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -38,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.upform = this.formBuilder.group({
             document: ['']
           });
-        this.filesUpload = this.userService.getAll();
+        this.filesUpload = this.userService.getAll()
         console.log(this.filesUpload)
     }
 
@@ -63,9 +58,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.userService.getAll().pipe(first()).subscribe(d=>{
             d.map(x=>{if(x.id==id){ this.oneDoc=x;}})
         })
-       /* this.userService.updateDoc(id,this.documents[0]).pipe(first()).subscribe(() => {
-            this.loadAllDocuments()
-        });*/
     }
     onFileChange(event) {
         if (event.target.files.length > 0) {
@@ -83,9 +75,21 @@ export class HomeComponent implements OnInit, OnDestroy {
         },err=>{console.log(err)})
       }
       downloadFile(file){
-        var blob = new Blob([file.data.data], {type:file.data.type});     
-        let url = window.URL.createObjectURL(blob);
+          let oo=new Uint8Array(file.data.data);
+         /* if(file.data.type=='plan/text'){
+            var enc = new TextDecoder("utf8");// always utf-8
+            let nov=enc.decode(oo);
+            var blob = new Blob([nov], {type:file.data.type});
+          }
+          else{
+              var blob=new Blob([oo],{type:file.data.type})
+              console.log(file);
+          }   */
+          console.log(file.name+'.'+file.type);
+          let f=new File([oo],file.name+'.'+file.type);
+        let url = ( window.URL).createObjectURL(f);
         let pwa = window.open(url);
+
           
       }
 }

@@ -18,6 +18,7 @@ export class UploadfileComponent implements OnInit {
   _number:Number;
   _note:string;
   _date:string;
+  original_name:string;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd.mm.yyyy hh:mm',
@@ -36,6 +37,7 @@ export class UploadfileComponent implements OnInit {
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      this.original_name=file.name;
       this.form.get('document').setValue(file);
     }
   }
@@ -47,9 +49,12 @@ export class UploadfileComponent implements OnInit {
   onSubmit() {
     const formData = new FormData();
     formData.append('file', this.form.get('document').value);
-    console.log(formData.getAll('file'));
+    let n=formData.get('file');
+    
     this.Doc.user_id=this.userId;
-  
+    
+    this.Doc.type=this.original_name.substring(this.original_name.lastIndexOf('.')+1, this.original_name.length);
+    console.log(this.Doc.type);
     this.Doc.date=this._date;
     this.Doc.name=this._name;
     this.Doc.note=this._note;

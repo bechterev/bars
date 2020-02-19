@@ -1,5 +1,8 @@
+<div class="leftbar"><div class="jumbotron">
 <h1>Hi {{currentUser.firstname}}!</h1>
 <app-uploadfile [userId]="currentUser.id"></app-uploadfile>
+</div>
+</div>
 <!-- start-->
 
       <div class="card cas">
@@ -45,11 +48,11 @@
             <div class="row">
 
             <div class="col-2" [class.act]="isAct">
-                <a (click)="deleteDocument(file.id)" *ngIf="edit!='yes'" class="text-danger">Delete</a>
+                <a (click)="deleteDocument(file.id)" *ngIf="edit!='yes' && currentUser.id==file.userId" class="text-danger btn"><i class="fa fa-download"></i> Delete</a>
                 <br />
-                <a (click)="edit='yes'; updateDocument(file.id)" *ngIf="edit!='yes'" class="text-danger">Update</a>
+                <a (click)="edit='yes'; updateDocument(file.id)" *ngIf="edit!='yes' && currentUser.id==file.userId" class="text-danger btn"><i class="fa fa-refresh"></i> Update</a>
                 <br />
-                <a (click)=" downloadFile(file)" *ngIf="edit!='yes'" class="text-danger">Download</a>
+                <a (click)=" downloadFile(file)" *ngIf="edit!='yes'" class="text-danger btn"><i class="fa fa-download"></i> Download</a>
             </div>
               <div class="col-3" [class.act]="isAct">{{file.number_document}}</div>
                 
