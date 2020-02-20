@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     upResponse = { status: '', message: '', filePath: '' };
     error: string;
     constructor(private formBuilder:FormBuilder,
-        private cd: ChangeDetectorRef,
+       
         private authenticationService: AuthenticationService,
         private userService: UserService
     ) {

@@ -50,7 +50,7 @@
             <div class="col-2" [class.act]="isAct">
                 <a (click)="deleteDocument(file.id)" *ngIf="edit!='yes' && currentUser.id==file.userId" class="text-danger btn"><i class="fa fa-download"></i> Delete</a>
                 <br />
-                <a (click)="edit='yes'; updateDocument(file.id)" *ngIf="edit!='yes' && currentUser.id==file.userId" class="text-danger btn"><i class="fa fa-refresh"></i> Update</a>
+                <a (click)="edit='yes'; updateDocument(file.id); m=i;" *ngIf="edit!='yes' && currentUser.id==file.userId" class="text-danger btn"><i class="fa fa-refresh"></i> Update</a>
                 <br />
                 <a (click)=" downloadFile(file)" *ngIf="edit!='yes'" class="text-danger btn"><i class="fa fa-download"></i> Download</a>
             </div>
@@ -63,7 +63,7 @@
                   <i class='icon ion-md-warning text-danger'></i>
                 </span></div>
             </div>
-            <div *ngIf="edit=='yes'" class="row">
+            <div *ngIf="edit=='yes' && i==m"  class="row">
 
                 <div class="col-2" [class.act]="isAct">
                     <a (click)="oneDoc.id=file.id; Save(oneDoc); edit='no'" class="text-danger">Save</a>
