@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { first,map } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,8 +10,7 @@ import {UserService} from '../services/user.service';
 
 
 @Component({ templateUrl: 'home.component.html',
-styleUrls: ['./home.component.scss'] ,
-changeDetection: ChangeDetectionStrategy.OnPush})
+styleUrls: ['./home.component.scss'] })
 export class HomeComponent implements OnInit, OnDestroy {
     currentUser: User;
     upform: FormGroup;
@@ -38,6 +37,12 @@ export class HomeComponent implements OnInit, OnDestroy {
           });
         this.filesUpload = this.userService.getAll()
         console.log(this.filesUpload)
+		this.loadAllDocuments();
+    }
+	   childStatusChanged(finished: boolean) {
+        if (finished){
+          this.loadAllDocuments();
+        }
     }
 
     ngOnDestroy() {
@@ -47,21 +52,19 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     deleteDocument(id: number) {
         this.userService.delete(id).pipe(first()).subscribe((res) => {
-            this.cd.detectChanges();
-            this.loadAllDocuments();
-            console.log(res);
+            this.loadAllDocuments()
         });
     }
 
     private loadAllDocuments() {
-        this.userService.getAll().pipe(first()).subscribe(documents => {
-            this.documents = documents;
-            console.log(documents);
+        this.userService.getAll().pipe(first()).subscribe(document => {
+            this.documents = document;
         });
     }
     updateDocument(id: number) { 
         this.userService.getAll().pipe(first()).subscribe(d=>{
             d.map(x=>{if(x.id==id){ this.oneDoc=x;}});
+			this.loadAllDocuments();
         })
     }
     onFileChange(event) {
@@ -76,7 +79,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         formData.append('document',JSON.stringify(this.oneDoc));
         this.userService.updateDoc(this.oneDoc.id,formData)
         .subscribe(res=>{
-            this.filesUpload = this.userService.getAll();
+            this.loadAllDocuments();
         },err=>{console.log(err)});
       }
       downloadFile(file){

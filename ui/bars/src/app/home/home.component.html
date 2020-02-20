@@ -1,6 +1,6 @@
 <div class="leftbar"><div class="jumbotron">
 <h1>Hi {{currentUser.firstname}}!</h1>
-<app-uploadfile [userId]="currentUser.id"></app-uploadfile>
+<app-uploadfile [userId]="currentUser.id" (onStatusChange)="childStatusChanged($event)"></app-uploadfile>
 </div>
 </div>
 <!-- start-->
@@ -42,7 +42,7 @@
   
             </div>
           </li>
-          <li *ngFor='let file of filesUpload | async; let i=index;'
+          <li *ngFor='let file of documents; let i=index;'
             [ngClass]="  i % 2 == 0 ? 'list-group-item amb' : 'list-group-item'">
   
             <div class="row">
