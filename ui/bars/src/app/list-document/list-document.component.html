@@ -6,7 +6,7 @@
     <div class="card cas">
       <div class="card-body">
         <div class="card-title">
-          <h3 class="text-center ">Название</h3>
+          <h3 class="text-center ">Список документов</h3>
         </div>
       </div>
       <ul class="list-group">
@@ -41,7 +41,7 @@
           <div class="row">
             <div class="col-3 rfont" [class.act]="isAct">{{file.number_document}}</div>
 
-            <div class="col-2" [class.act]="isAct">{{file.date}}</div>
+            <div class="col-2" [class.act]="isAct">{{file.date | date:"dd.MM.yyyy hh:mm"}}</div>
             <div class="col-2" [class.act]="isAct">{{file.name}}</div>
             <div class="hoverfint col-5 rfont" [class.act]="isAct">{{file.note}}<span class='ml-1'
                 class='pointer hoverfint-hidden'>
